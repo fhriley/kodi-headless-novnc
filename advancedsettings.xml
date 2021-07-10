@@ -1,0 +1,20 @@
+<advancedsettings>
+  <videodatabase>
+    <type>mysql</type>
+    <host>DB_HOST</host>
+    <port>DB_PORT</port>
+    <user>DB_USER</user>
+    <pass>DB_PASS</pass>
+  </videodatabase> 
+  <musicdatabase>
+    <type>mysql</type>
+    <host>DB_HOST</host>
+    <port>DB_PORT</port>
+    <user>DB_USER</user>
+    <pass>DB_PASS</pass>
+  </musicdatabase>
+  <videolibrary>
+    <importwatchedstate>true</importwatchedstate>
+    <importresumepoint>true</importresumepoint>
+  </videolibrary>
+</advancedsettings>
