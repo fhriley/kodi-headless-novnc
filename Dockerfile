@@ -6,7 +6,7 @@ RUN go mod init build && \
 
 FROM ubuntu:20.04
 
-ENV DEBIAN_FRONTEND="noninteractive"
+ARG DEBIAN_FRONTEND="noninteractive"
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
@@ -16,13 +16,14 @@ RUN apt-get update -y && \
         gnupg && \
     rm -rf /var/lib/apt/lists
 
+ARG KODI_VERSION=19.1
 RUN apt-get update -y && \
     apt purge kodi* && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:team-xbmc/ppa && \
     apt-get update -y && \
     apt-get install -y --no-install-recommends \
-        kodi && \
+        kodi=2:${KODI_VERSION}+* && \
     rm -rf /var/lib/apt/lists
 
 COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
@@ -30,13 +31,9 @@ COPY supervisord.conf /etc/
 COPY advancedsettings.xml /usr/share/kodi
 COPY sources.xml /usr/share/kodi
 COPY docker-entrypoint.sh /
-EXPOSE 8080
 
-RUN groupadd --gid 1000 app && \
-    useradd --home-dir /data --shell /bin/bash --uid 1000 --gid 1000 app && \
-    mkdir -p /data
-VOLUME /data
-
+ENV UID=2000
+ENV GID=2000
 ENV DB_HOST=mysql
 ENV DB_PORT=3306
 ENV DB_USER=kodi
@@ -44,4 +41,14 @@ ENV DB_PASS=kodi
 ENV TV_SOURCE=/data/tv
 ENV MOVIES_SOURCE=/data/movies
 
+# noVNC
+EXPOSE 8000
+
+# Kodi HTTP API
+EXPOSE 8080
+
+VOLUME /data
+
 CMD ["/docker-entrypoint.sh"]
+
+maintainer fhriley "fhriley+git@gmail.com"

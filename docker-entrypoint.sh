@@ -1,5 +1,8 @@
 #!/bin/bash
 
+id -g app &>/dev/null || groupadd --gid $GID app
+id -u app &>/dev/null || useradd --home-dir /data --shell /bin/bash --uid $UID --gid $GID app
+
 if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then
   mkdir -p /data/.kodi/userdata
   sed -e 's@DB_HOST@'"$DB_HOST"'@g' \
@@ -16,6 +19,5 @@ if [ ! -f /data/.kodi/userdata/sources.xml ]; then
       /usr/share/kodi/sources.xml > /data/.kodi/userdata/sources.xml
 fi
 
-chown -R app:app /data
 chown app:app /dev/stdout
 exec gosu app supervisord
