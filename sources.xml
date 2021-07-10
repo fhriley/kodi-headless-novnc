@@ -6,12 +6,12 @@
         <default pathversion="1"></default>
         <source>
             <name>tv</name>
-            <path pathversion="1">TV_SOURCE</path>
+            <path pathversion="1">KODI_TV_SOURCE</path>
             <allowsharing>true</allowsharing>
         </source>
         <source>
             <name>movies</name>
-            <path pathversion="1">MOVIES_SOURCE</path>
+            <path pathversion="1">KODI_MOVIES_SOURCE</path>
             <allowsharing>true</allowsharing>
         </source>
     </video>
@@ -25,12 +25,12 @@
         <default pathversion="1"></default>
         <source>
             <name>tv</name>
-            <path pathversion="1">TV_SOURCE</path>
+            <path pathversion="1">KODI_TV_SOURCE</path>
             <allowsharing>true</allowsharing>
         </source>
         <source>
             <name>movies</name>
-            <path pathversion="1">MOVIES_SOURCE</path>
+            <path pathversion="1">KODI_MOVIES_SOURCE</path>
             <allowsharing>true</allowsharing>
         </source>
     </files>

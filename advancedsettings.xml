@@ -1,17 +1,17 @@
 <advancedsettings>
   <videodatabase>
     <type>mysql</type>
-    <host>DB_HOST</host>
-    <port>DB_PORT</port>
-    <user>DB_USER</user>
-    <pass>DB_PASS</pass>
+    <host>KODI_DB_HOST</host>
+    <port>KODI_DB_PORT</port>
+    <user>KODI_DB_USER</user>
+    <pass>KODI_DB_PASS</pass>
   </videodatabase> 
   <musicdatabase>
     <type>mysql</type>
-    <host>DB_HOST</host>
-    <port>DB_PORT</port>
-    <user>DB_USER</user>
-    <pass>DB_PASS</pass>
+    <host>KODI_DB_HOST</host>
+    <port>KODI_DB_PORT</port>
+    <user>KODI_DB_USER</user>
+    <pass>KODI_DB_PASS</pass>
   </musicdatabase>
   <videolibrary>
     <importwatchedstate>true</importwatchedstate>

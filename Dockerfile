@@ -32,14 +32,14 @@ COPY advancedsettings.xml /usr/share/kodi
 COPY sources.xml /usr/share/kodi
 COPY docker-entrypoint.sh /
 
-ENV UID=2000
-ENV GID=2000
-ENV DB_HOST=mysql
-ENV DB_PORT=3306
-ENV DB_USER=kodi
-ENV DB_PASS=kodi
-ENV TV_SOURCE=/data/tv
-ENV MOVIES_SOURCE=/data/movies
+ENV KODI_UID=2000
+ENV KODI_GID=2000
+ENV KODI_DB_HOST=mysql
+ENV KODI_DB_PORT=3306
+ENV KODI_DB_USER=kodi
+ENV KODI_DB_PASS=kodi
+ENV KODI_TV_SOURCE=/data/tv
+ENV KODI_MOVIES_SOURCE=/data/movies
 
 # noVNC
 EXPOSE 8000
