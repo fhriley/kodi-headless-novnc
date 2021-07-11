@@ -5,7 +5,7 @@ A headless, dockerized Kodi instance for a shared MySQL setup to allow having a 
 
 This image has 2 major advantages over other headless images:
 
-1. The Kodi GUI is available in a web browser on port 8000.
+1. The Kodi GUI is available in a web browser on port 8000, which means you don't need a second "real" Kodi running to configure everything.
 
 2. This Kodi image does not use any patches to modify the code. It uses the standard Ubuntu install and can easily be updated to any new versions of Kodi.
 
