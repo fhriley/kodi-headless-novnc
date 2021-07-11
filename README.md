@@ -2,9 +2,12 @@
 
 # Introduction
 A headless, dockerized Kodi instance for a shared MySQL setup to allow having a webinterface and automatic periodic library updates without the need for a player system to be permanently on.
-This image can also be used to configure your Kodi MySQL setup through a web browser. A second Kodi instance is not required!
 
-In addition, this headless Kodi image does not have to use any patches. It uses the standard Ubuntu install. That means this image can easily be updated to any new versions of Kodi.
+This image has 2 major advantages over other headless images:
+
+1. The Kodi GUI is available in a web browser on port 8000.
+
+2. This Kodi image does not use any patches to modify the code. It uses the standard Ubuntu install and can easily be updated to any new versions of Kodi.
 
 # Tags
 
