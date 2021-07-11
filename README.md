@@ -84,9 +84,9 @@ Container environment variables:
 * `KODI_UID` - The user ID to run all processes in the container under (default `2000`)
 * `KODI_GID` - The group ID to run all processes in the container under (default `2000`)
 
-You may also mount your own copy of `advancedsettings.xml` if you like to. The container startup will then skip any of the database configuration variables (KODI_DB*) and just use the supplied copy.
+You may also mount your own copy of `advancedsettings.xml` at `/data/.kodi/userdata/advancedsettings.xml` if you like to. The container startup will then skip any of the database configuration variables (KODI_DB*) and just use the supplied copy.
 
-You may also mount your own copy of `sources.xml` if you like to. The container startup will then skip any of the source configuration variables (KODI_*_SOURCE) and just use the supplied copy.
+You may also mount your own copy of `sources.xml` at `/data/.kodi/userdata/sources.xml` if you like to. The container startup will then skip any of the source configuration variables (KODI_*_SOURCE) and just use the supplied copy.
 
 __WARNING__: A misconfigured sources.xml or passwords.xml can lead to the Kodi instance not finding any of your media which will result in emptying your database. Make a backup of your database and/or be double sure before enabling this feature!
 
