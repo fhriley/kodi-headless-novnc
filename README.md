@@ -31,7 +31,7 @@ docker pull fhriley/kodi-headless-vnc
 
 Run the container and set necessary environment variables:
 ```bash
-docker run --name=kodi-headless-vnc -e KODI_DB_HOST=<MY_KODI_DBHOST> -e KODI_DBUSER=<MY_KODI_DBUSER> -e KODI_DBPASS=<MY_KODI_DBPASS> -e KODI_TV_SOURCE=<MY_TV_SOURCE> -e KODI_MOVIES_SOURCE=<MY_MOVIES_SOURCE> fhriley/kodi-headless-vnc
+docker run --name=kodi-headless-vnc -e KODI_DB_HOST=<MY_KODI_DBHOST> -e KODI_DB_USER=<MY_KODI_DBUSER> -e KODI_DB_PASS=<MY_KODI_DBPASS> -e KODI_TV_SOURCE=<MY_TV_SOURCE> -e KODI_MOVIES_SOURCE=<MY_MOVIES_SOURCE> fhriley/kodi-headless-vnc
 ```
 
 All kodi config that is not stored in the database will be stored in `/data`. You can mount it as follows:
