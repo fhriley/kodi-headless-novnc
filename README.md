@@ -29,12 +29,12 @@ REMINDER: If you are not using the default scrapers you need to take care of ins
 
 Get the container image:
 ```bash
-docker pull fhriley/kodi-headless-vnc
+docker pull fhriley/kodi-headless-novnc
 ```
 
 Run the container and set necessary environment variables:
 ```bash
-docker run --name=kodi-headless-vnc -e KODI_DB_HOST=<MY_KODI_DBHOST> -e KODI_DB_USER=<MY_KODI_DBUSER> -e KODI_DB_PASS=<MY_KODI_DBPASS> -e KODI_TV_SOURCE=<MY_TV_SOURCE> -e KODI_MOVIES_SOURCE=<MY_MOVIES_SOURCE> fhriley/kodi-headless-vnc
+docker run --name=kodi-headless-novnc -e KODI_DB_HOST=<MY_KODI_DBHOST> -e KODI_DB_USER=<MY_KODI_DBUSER> -e KODI_DB_PASS=<MY_KODI_DBPASS> -e KODI_TV_SOURCE=<MY_TV_SOURCE> -e KODI_MOVIES_SOURCE=<MY_MOVIES_SOURCE> fhriley/kodi-headless-novnc
 ```
 
 All kodi config that is not stored in the database will be stored in `/data`. You can mount it as follows:
