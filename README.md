@@ -88,7 +88,7 @@ You may also mount your own copy of `advancedsettings.xml` at `/data/.kodi/userd
 
 You may also mount your own copy of `sources.xml` at `/data/.kodi/userdata/sources.xml` if you like to. The container startup will then skip any of the source configuration variables (KODI_*_SOURCE) and just use the supplied copy.
 
-__WARNING__: A misconfigured sources.xml or passwords.xml can lead to the Kodi instance not finding any of your media which will result in emptying your database. Make a backup of your database and/or be double sure before enabling this feature!
+__WARNING__: A misconfigured sources.xml can lead to the Kodi instance not finding any of your media which will result in emptying your database. Make a backup of your database and/or be double sure before enabling this feature!
 
 # Credits
 
