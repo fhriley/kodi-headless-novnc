@@ -16,5 +16,25 @@
   <videolibrary>
     <importwatchedstate>true</importwatchedstate>
     <importresumepoint>true</importresumepoint>
+    <dateadded>0</dateadded>
   </videolibrary>
+  <services>
+    <airplay>false</airplay>
+    <esallinterfaces>true</esallinterfaces>
+    <escontinuousdelay>25</escontinuousdelay>
+    <esenabled>true</esenabled>
+    <esinitialdelay>750</esinitialdelay>
+    <esmaxclients>20</esmaxclients>
+    <esport>9777</esport>
+    <esportrange>1</esportrange>
+    <webserver>true</webserver>
+    <webserverport>8080</webserverport>
+  </services>
+  <videoscanner>
+    <ignoreerrors>true</ignoreerrors>
+  </videoscanner>
+  <splash>false</splash>
+  <audiooutput>
+    <guisoundmode>0</guisoundmode>
+  </audiooutput>
 </advancedsettings>
