@@ -66,12 +66,9 @@ services:
    restart: always
    init: true
    ports:
-     - "8000:8000/tcp"
      - "8080:8080/tcp"
    environment:
      KODI_DB_HOST: 192.168.1.246
-     KODI_UID: 2000
-     KODI_GID: 2000
    volumes:
      - ./kodi_data:/data
 ```
