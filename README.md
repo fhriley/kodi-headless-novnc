@@ -1,7 +1,8 @@
 [![](http://kodi.wiki/images/4/43/Side-by-side-dark-transparent.png)](https://kodi.tv/)
 
 # Introduction
-A headless, dockerized Kodi instance for a shared MySQL setup.
+
+A headless, dockerized Kodi instance for a shared MySQL setup without the need for any video or audio devices.
 
 This image has 2 major advantages over other headless images:
 
@@ -13,7 +14,8 @@ This image has 2 major advantages over other headless images:
 
 | Tagname              | Branch      | Kodi version | Base distro          |
 |----------------------|-------------|--------------|----------------------|
-| `latest`             | matrix      | 19           | Ubuntu Focal Fossa   |
+| `latest`             | matrix      | 19.1         | Ubuntu Focal Fossa   |
+| `19.1`               | matrix      | 19.1         | Ubuntu Focal Fossa   |
 
 # Prerequisites
 You need to have set up library sharing via a dedicated MySQL database beforehand by reading, understanding and executing the necessary steps in the [MySQL library sharing guide](http://kodi.wiki/view/MySQL).
@@ -68,8 +70,6 @@ services:
      - "8080:8080/tcp"
    environment:
      KODI_DB_HOST: 192.168.1.246
-     KODI_TV_SOURCE: nfs://nas/zfs/media/tv/
-     KODI_MOVIES_SOURCE: nfs://nas/zfs/media/movies/
      KODI_UID: 2000
      KODI_GID: 2000
    volumes:
@@ -82,16 +82,10 @@ Container environment variables:
 * `KODI_DB_USER` - MySQL user for Kodi (default `kodi`)
 * `KODI_DB_PASS` - MySQL password for Kodi user (default `kodi`)
 * `KODI_DB_PORT` - MySQL remote port (default `3306`)
-* `KODI_TV_SOURCE` - Path to the tv library (default `/data/tv`)
-* `KODI_MOVIES_SOURCE` - Path to the movies library (default `/data/movies`)
 * `KODI_UID` - The user ID to run all processes in the container under (default `2000`)
 * `KODI_GID` - The group ID to run all processes in the container under (default `2000`)
 
 You may also mount your own copy of `advancedsettings.xml` at `/data/.kodi/userdata/advancedsettings.xml`. The container startup will then skip any of the database configuration variables (KODI_DB*) and just use the supplied copy.
-
-You may also mount your own copy of `sources.xml` at `/data/.kodi/userdata/sources.xml`. The container startup will then skip any of the source configuration variables (KODI_*_SOURCE) and just use the supplied copy.
-
-__WARNING__: A misconfigured sources.xml can lead to the Kodi instance not finding any of your media which will result in emptying your database. Make a backup of your database and/or be double sure before enabling this feature!
 
 # Credits
 
