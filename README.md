@@ -66,7 +66,7 @@ services:
    restart: always
    init: true
    ports:
-     - "8080:8080/tcp"
+     - "8000:8000/tcp"
    environment:
      KODI_DB_HOST: 192.168.1.246
    volumes:
