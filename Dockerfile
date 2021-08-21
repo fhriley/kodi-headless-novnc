@@ -1,8 +1,9 @@
 FROM golang:1.14-buster AS easy-novnc-build
 WORKDIR /src
+ARG EASY_NOVNC_REV=6e198aa0fb70c68b1bc3355bfce4df30fb0f71a4
 RUN go mod init build && \
-    go get github.com/geek1011/easy-novnc@v1.1.0 && \
-    go build -o /bin/easy-novnc github.com/geek1011/easy-novnc
+    go get github.com/pgaskin/easy-novnc@${EASY_NOVNC_REV} && \
+    go build -o /bin/easy-novnc github.com/pgaskin/easy-novnc
 
 FROM ubuntu:20.04
 
