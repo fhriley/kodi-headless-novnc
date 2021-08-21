@@ -1,9 +1,12 @@
 FROM golang:1.14-buster AS easy-novnc-build
-WORKDIR /src
-ARG EASY_NOVNC_REV=6e198aa0fb70c68b1bc3355bfce4df30fb0f71a4
-RUN go mod init build && \
-    go get github.com/pgaskin/easy-novnc@${EASY_NOVNC_REV} && \
-    go build -o /bin/easy-novnc github.com/pgaskin/easy-novnc
+
+ARG EASY_NOVNC_BRANCH=master
+RUN cd $GOPATH/src \
+    && git clone --depth=1 --branch ${EASY_NOVNC_BRANCH} https://github.com/fhriley/easy-novnc \
+    && cd $GOPATH/src/easy-novnc \
+    && go mod edit -replace github.com/pgaskin/easy-novnc=github.com/fhriley/easy-novnc@${EASY_NOVNC_BRANCH} \
+    && go mod tidy \
+    && go build -o /bin/easy-novnc
 
 FROM ubuntu:20.04
 
