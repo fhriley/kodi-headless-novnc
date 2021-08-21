@@ -36,7 +36,7 @@ docker pull fhriley/kodi-headless-novnc
 
 Run the container and set necessary environment variables:
 ```bash
-docker run --name=kodi-headless-novnc -e KODI_DB_HOST=<MY_KODI_DBHOST> -e KODI_DB_USER=<MY_KODI_DBUSER> -e KODI_DB_PASS=<MY_KODI_DBPASS> -e KODI_TV_SOURCE=<MY_TV_SOURCE> -e KODI_MOVIES_SOURCE=<MY_MOVIES_SOURCE> fhriley/kodi-headless-novnc
+docker run --name=kodi-headless-novnc -e KODI_DB_HOST=<MY_KODI_DBHOST> -e KODI_DB_USER=<MY_KODI_DBUSER> -e KODI_DB_PASS=<MY_KODI_DBPASS> fhriley/kodi-headless-novnc
 ```
 
 All kodi config that is not stored in the database will be stored in `/data`. You can mount it as follows:
@@ -69,6 +69,8 @@ services:
      - "8000:8000/tcp"
    environment:
      KODI_DB_HOST: 192.168.1.246
+     KODI_DB_USER: user
+     KODI_DB_PASS: password
    volumes:
      - ./kodi_data:/data
 ```
