@@ -28,7 +28,10 @@ RUN apt-get update -y && \
     apt-get update -y && \
     apt-get install -y --no-install-recommends \
         kodi=2:${KODI_VERSION}+* && \
+    apt-get install -y alsa-base samba-common-bin && \
     rm -rf /var/lib/apt/lists
+
+RUN echo 'pcm.!default = null;' > /etc/asound.conf
 
 COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
 COPY supervisord.conf /etc/
