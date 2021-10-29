@@ -14,7 +14,8 @@ This image has 2 major advantages over other headless images:
 
 | Tagname              | Branch      | Kodi version | Base distro          |
 |----------------------|-------------|--------------|----------------------|
-| `latest`             | matrix      | 19.2         | Ubuntu Focal Fossa   |
+| `latest`             | matrix      | 19.3         | Ubuntu Focal Fossa   |
+| `19.3`               | matrix      | 19.3         | Ubuntu Focal Fossa   |
 | `19.2`               | matrix      | 19.2         | Ubuntu Focal Fossa   |
 | `19.1`               | matrix      | 19.1         | Ubuntu Focal Fossa   |
 
