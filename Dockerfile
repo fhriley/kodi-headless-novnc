@@ -22,7 +22,7 @@ RUN apt-get update -y && \
         samba-common-bin \
     && rm -rf /var/lib/apt/lists
 
-ARG KODI_VERSION=19.2
+ARG KODI_VERSION=19.3
 RUN apt-get update -y && \
     apt purge kodi* && \
     apt-get install -y software-properties-common && \
