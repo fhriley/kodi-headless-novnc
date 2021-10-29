@@ -22,14 +22,14 @@ RUN apt-get update -y && \
         samba-common-bin \
     && rm -rf /var/lib/apt/lists
 
-ARG KODI_VERSION=19.3
+ARG KODI_VERSION=6:19.3
 RUN apt-get update -y && \
     apt purge kodi* && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:team-xbmc/ppa && \
     apt-get update -y && \
     apt-get install -y --no-install-recommends \
-        kodi=2:${KODI_VERSION}+* \
+        kodi=${KODI_VERSION}+* \
     && rm -rf /var/lib/apt/lists
 
 RUN echo 'pcm.!default = null;' > /etc/asound.conf
