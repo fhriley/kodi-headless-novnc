@@ -1,6 +1,6 @@
 FROM golang:1.14-buster AS easy-novnc-build
 
-ARG EASY_NOVNC_BRANCH=master
+ARG EASY_NOVNC_BRANCH=v1.3.0
 RUN cd $GOPATH/src \
     && git clone --depth=1 --branch ${EASY_NOVNC_BRANCH} https://github.com/fhriley/easy-novnc \
     && cd $GOPATH/src/easy-novnc \
