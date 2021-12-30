@@ -12,12 +12,12 @@ This image has 2 major advantages over other headless images:
 
 # Tags
 
-| Tagname              | Branch      | Kodi version | Base distro          |
-|----------------------|-------------|--------------|----------------------|
-| `latest`             | matrix      | 19.3         | Ubuntu Focal Fossa   |
-| `19.3`               | matrix      | 19.3         | Ubuntu Focal Fossa   |
-| `19.2`               | matrix      | 19.2         | Ubuntu Focal Fossa   |
-| `19.1`               | matrix      | 19.1         | Ubuntu Focal Fossa   |
+| Tagname              | Branch      | Kodi version | Base distro          | Arch              |
+|----------------------|-------------|--------------|----------------------|-------------------|
+| `latest`             | matrix      | 19.3         | Ubuntu 22.04         | amd64, arm, arm64 |
+| `19.3`               | matrix      | 19.3         | Ubuntu 22.04         | amd64, arm, arm64 |
+| `19.2`               | matrix      | 19.2         | Ubuntu 20.04         | amd64             |
+| `19.1`               | matrix      | 19.1         | Ubuntu 20.04         | amd64             |
 
 # Prerequisites
 You need to have set up library sharing via a dedicated MySQL database beforehand by reading, understanding and executing the necessary steps in the [MySQL library sharing guide](http://kodi.wiki/view/MySQL).
