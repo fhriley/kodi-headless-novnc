@@ -16,7 +16,6 @@ FROM $BASE_IMAGE as build
 ARG KODI_NAME="Matrix"
 ARG KODI_VER="19.3"
 ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
-ARG NPROC=1
 
 ARG DEBIAN_FRONTEND="noninteractive"
 
@@ -176,12 +175,12 @@ RUN cd /tmp/kodi-source/build \
     -DENABLE_LIRCCLIENT=OFF \
     -DENABLE_VAAPI=OFF \
     -DENABLE_VDPAU=OFF \
- && make -j $NPROC \
+ && make -j $(nproc) \
  && make DESTDIR=/tmp/kodi-build install
 
 RUN set -ex \
  && cd /tmp/kodi-source \
- && make -j$NPROC -C tools/depends/target/binary-addons \
+ && make -j$(nproc) -C tools/depends/target/binary-addons \
 	ADDONS="$KODI_ADDONS" \
 	PREFIX=/tmp/kodi-build/usr
 
