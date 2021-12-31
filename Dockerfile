@@ -3,6 +3,7 @@ ARG BASE_IMAGE="ubuntu:22.04"
 FROM golang:1.14-buster AS easy-novnc-build
 
 ARG EASY_NOVNC_BRANCH=v1.3.0
+
 RUN cd $GOPATH/src \
   && git clone --depth=1 --branch ${EASY_NOVNC_BRANCH} https://github.com/fhriley/easy-novnc \
   && cd $GOPATH/src/easy-novnc \
@@ -12,10 +13,6 @@ RUN cd $GOPATH/src \
 
 
 FROM $BASE_IMAGE as build
-
-ARG KODI_NAME="Matrix"
-ARG KODI_VER="19.3"
-ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
 
 ARG DEBIAN_FRONTEND="noninteractive"
 
@@ -134,6 +131,10 @@ RUN apt-get update -y \
     zip \
     zlib1g-dev \
   && rm -rf /var/lib/apt/lists
+
+ARG KODI_NAME="Matrix"
+ARG KODI_VER="19.3"
+ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
 
 RUN set -ex \
  && mkdir -p /tmp/kodi-source/build \
