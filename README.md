@@ -34,7 +34,7 @@ fhriley/kodi-headless-novnc:latest
 
 Docker compose example:
 
-```
+```yaml
 version: "2"
 
 services:
