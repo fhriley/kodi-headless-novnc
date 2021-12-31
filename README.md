@@ -35,7 +35,7 @@ fhriley/kodi-headless-novnc:latest
 Docker compose example:
 
 ```yaml
-version: "2"
+version: "3"
 
 services:
   kodi:
