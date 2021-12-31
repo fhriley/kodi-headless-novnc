@@ -79,14 +79,14 @@ services:
 
 ## Tags
 
-| Tagname  | Branch  | Kodi version  | Base distro   | Arch                 |
+| Tagname  | Branch  | Kodi version  | Base distro   | Architecture         |
 |----------|---------|---------------|---------------|----------------------|
 | `latest` | matrix  | 19.3          | Ubuntu 22.04  | amd64, armv7, arm64  |
 | `19.3`   | matrix  | 19.3          | Ubuntu 22.04  | amd64, armv7, arm64  |
 | `19.2`   | matrix  | 19.2          | Ubuntu 20.04  | amd64                |
 | `19.1`   | matrix  | 19.1          | Ubuntu 20.04  | amd64                |
 
-Docker will automatically pull the correct version for your platform 
+Docker will automatically pull the correct architecture for your platform.
 
 ## User / Group Identifiers
 
