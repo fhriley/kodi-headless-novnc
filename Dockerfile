@@ -148,7 +148,7 @@ RUN cd /tmp/kodi-source/build \
     -DAPP_RENDER_SYSTEM=gl \
     -DCORE_PLATFORM_NAME="x11" \
     -DENABLE_AIRTUNES=OFF \
-    -DENABLE_ALSA=OFF \
+    -DENABLE_ALSA=ON \
     -DENABLE_AVAHI=OFF \
     -DENABLE_BLUETOOTH=OFF \
     -DENABLE_BLURAY=OFF \
@@ -199,6 +199,8 @@ ARG DEBIAN_FRONTEND="noninteractive"
 
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
+    alsa-base \
+    ca-certificates \
     gosu \
     supervisor \
     tigervnc-standalone-server \
@@ -232,7 +234,8 @@ RUN apt-get update -y \
     libxrandr2 \
     libxslt1.1 \
     libplist3 \
-  && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+  && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
+  && echo 'pcm.!default = null;' > /etc/asound.conf
 
 COPY --from=build /tmp/kodi-build/usr/ /usr/
 COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
