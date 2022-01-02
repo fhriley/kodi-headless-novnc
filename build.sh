@@ -13,6 +13,3 @@ CACHE="type=registry,ref=$USER/$IMAGE:latest"
 
 docker login
 docker buildx build $BUILD_ARGS --platform $PLATFORMS --tag $USER/$IMAGE:$KODI_VER --tag $USER/$IMAGE:latest --cache-from $CACHE --cache-to type=inline,mode=max --push --pull .
-
-#docker manifest create $USER/$IMAGE:latest $USER/$IMAGE:$KODI_VER
-#docker manifest push --purge $USER/$IMAGE:latest
