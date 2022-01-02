@@ -1,6 +1,6 @@
 # fhriley/kodi-headless-novnc
 
-[![Build Images](https://github.com/fhriley/kodi-headless-novnc/actions/workflows/actions.yml/badge.svg)](https://github.com/fhriley/kodi-headless-novnc/actions/workflows/actions.yml)
+[![Build Images](https://github.com/fhriley/kodi-headless-novnc/actions/workflows/actions.yml/badge.svg?branch=master)](https://github.com/fhriley/kodi-headless-novnc/actions/workflows/actions.yml)
 
 A headless install of kodi in a docker container.
 Commonly used with MySQL Kodi setup to allow library updates via web interface.
