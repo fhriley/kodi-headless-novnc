@@ -36,6 +36,7 @@ jobs:
           build-args: |
             KODI_VER=${{ github.event.inputs.version }}
             KODI_NAME=${{ github.event.inputs.name }}
+            BUILDKIT_INLINE_CACHE=1
           platforms: |
             linux/amd64
             linux/arm64
@@ -44,5 +45,4 @@ jobs:
           tags: |
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}
             fhriley/kodi-headless-novnc:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: cache-from:type=registry,ref=fhriley/kodi-headless-novnc:latest
