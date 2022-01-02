@@ -45,4 +45,4 @@ jobs:
           tags: |
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}
             fhriley/kodi-headless-novnc:latest
-          cache-from: cache-from:type=registry,ref=fhriley/kodi-headless-novnc:latest
+          cache-from: type=registry,ref=fhriley/kodi-headless-novnc:latest
