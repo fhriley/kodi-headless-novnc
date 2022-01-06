@@ -21,17 +21,17 @@ be updated to any new versions of Kodi.
 
 ```bash
 docker run --name=kodi-headless-novnc \
--d --init \
--v <MY_DATA_PATH>:/data \
--e KODI_DB_HOST=<MY_KODI_DBHOST> \
--e KODI_DB_USER=<MY_KODI_DBUSER> \
--e KODI_DB_PASS=<MY_KODI_DBPASS> \
--e TZ=<MY_TIMEZONE> \
--p 8000:8000/tcp \
--p 8080:8080/tcp \
--p 9090:9090/tcp \
--p 9777:9777/udp \
-fhriley/kodi-headless-novnc:latest
+  -d --init \
+  -v <MY_DATA_PATH>:/data \
+  -e KODI_DB_HOST=<MY_KODI_DBHOST> \
+  -e KODI_DB_USER=<MY_KODI_DBUSER> \
+  -e KODI_DB_PASS=<MY_KODI_DBPASS> \
+  -e TZ=<MY_TIMEZONE> \
+  -p 8000:8000/tcp \
+  -p 8080:8080/tcp \
+  -p 9090:9090/tcp \
+  -p 9777:9777/udp \
+  fhriley/kodi-headless-novnc:latest
 ```
 
 Docker compose example:
