@@ -132,16 +132,14 @@ RUN apt-get update -y \
     zlib1g-dev \
   && rm -rf /var/lib/apt/lists
 
-ARG KODI_NAME="Matrix"
-ARG KODI_VER="19.3"
+ARG KODI_BRANCH="19.3-Matrix"
 ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
 
-RUN set -ex \
- && mkdir -p /tmp/kodi-source/build \
- && curl -o /tmp/kodi.tar.gz -L "https://github.com/xbmc/xbmc/archive/${KODI_VER}-${KODI_NAME}.tar.gz" \
- && tar xf /tmp/kodi.tar.gz -C /tmp/kodi-source --strip-components=1
+RUN cd /tmp \
+ && git clone --depth=1 --branch ${KODI_BRANCH} https://github.com/xbmc/xbmc.git
 
-RUN cd /tmp/kodi-source/build \
+RUN mkdir -p /tmp/xbmc/build \
+  && cd /tmp/xbmc/build \
   && cmake ../. \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -180,16 +178,16 @@ RUN cd /tmp/kodi-source/build \
  && make DESTDIR=/tmp/kodi-build install
 
 RUN set -ex \
- && cd /tmp/kodi-source \
+ && cd /tmp/xbmc \
  && make -j$(nproc) -C tools/depends/target/binary-addons \
 	ADDONS="$KODI_ADDONS" \
 	PREFIX=/tmp/kodi-build/usr
 
 RUN install -Dm755 \
-	/tmp/kodi-source/tools/EventClients/Clients/KodiSend/kodi-send.py \
+	/tmp/xbmc/tools/EventClients/Clients/KodiSend/kodi-send.py \
 	/tmp/kodi-build/usr/bin/kodi-send \
  && install -Dm644 \
-	/tmp/kodi-source/tools/EventClients/lib/python/xbmcclient.py \
+	/tmp/xbmc/tools/EventClients/lib/python/xbmcclient.py \
 	/tmp/kodi-build/usr/lib/python3.8/xbmcclient.py
 
 
