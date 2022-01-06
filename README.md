@@ -7,6 +7,8 @@ Commonly used with MySQL Kodi setup to allow library updates via web interface.
 
 https://hub.docker.com/r/fhriley/kodi-headless-novnc
 
+https://github.com/fhriley/kodi-headless-novnc
+
 This image has 2 major advantages over other headless images:
 
 1. The Kodi GUI is available in a web browser on port 8000, which means you don't need a
