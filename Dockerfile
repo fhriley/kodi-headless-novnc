@@ -1,14 +1,13 @@
 ARG BASE_IMAGE="ubuntu:22.04"
 
-FROM golang:1.14-buster AS easy-novnc-build
+FROM golang:1.17-buster AS easy-novnc-build
 
 ARG EASY_NOVNC_BRANCH=v1.3.0
 
 RUN cd $GOPATH/src \
   && git clone --depth=1 --branch ${EASY_NOVNC_BRANCH} https://github.com/fhriley/easy-novnc \
   && cd $GOPATH/src/easy-novnc \
-  && go mod edit -replace github.com/pgaskin/easy-novnc=github.com/fhriley/easy-novnc@${EASY_NOVNC_BRANCH} \
-  && go mod tidy \
+  && go mod download \
   && go build -o /bin/easy-novnc
 
 
