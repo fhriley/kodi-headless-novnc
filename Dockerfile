@@ -212,7 +212,7 @@ RUN apt-get update -y \
     libass9 \
     libcurl4 \
     libegl1 \
-    libfmt7 \
+    libfmt8 \
     libfstrcmp0 \
     libgl1 \
     libiso9660-11 \
