@@ -39,7 +39,7 @@ if __name__ == '__main__':
         platforms=','.join(args.platform),
         tags=' '.join([f'--tag {IMAGE_NAME}:{tag}' for tag in args.tag]),
         cache=CACHE + (args.cache or args.tag[0]),
-        push='--push' if args.push else '--load'
+        push='--push' if args.push else ''
     )
 
     print(buildx)
