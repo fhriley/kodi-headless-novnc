@@ -1,16 +1,9 @@
 ARG BASE_IMAGE="ubuntu:22.04"
+ARG EASY_NOVNC_IMAGE="fhriley/easy-novnc:1.3.0"
+ARG TURBOVNC_IMAGE="fhriley/turbovnc:2.2.7"
 
-FROM golang:1.17-buster AS easy-novnc-build
-
-ARG EASY_NOVNC_BRANCH=v1.3.0
-
-RUN cd $GOPATH/src \
-  && git clone --depth=1 --branch ${EASY_NOVNC_BRANCH} https://github.com/fhriley/easy-novnc \
-  && cd $GOPATH/src/easy-novnc \
-  && go mod download \
-  && go build -o /bin/easy-novnc
-
-
+FROM $EASY_NOVNC_IMAGE as easy-novnc
+FROM $TURBOVNC_IMAGE as turbovnc
 FROM $BASE_IMAGE as build
 
 ARG DEBIAN_FRONTEND="noninteractive"
@@ -198,10 +191,16 @@ RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     alsa-base \
     ca-certificates \
+    curl \
     gosu \
     supervisor \
-    tigervnc-standalone-server \
     samba-common-bin \
+    xauth \
+    xfonts-base \
+    xkb-data \
+    x11-xkb-utils \
+    x11-xserver-utils \
+    \
     libavcodec58 \
     libavfilter7 \
     libavformat58 \
@@ -234,8 +233,13 @@ RUN apt-get update -y \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf
 
+# assets.fanart.tv uses a ZeroSSL cert
+RUN curl -sfL -o /usr/local/share/ca-certificates/ZeroSSL.crt "https://crt.sh/?d=2427368505" \
+    && update-ca-certificates
+
 COPY --from=build /tmp/kodi-build/usr/ /usr/
-COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
+COPY --from=easy-novnc /usr/local/bin/easy-novnc /usr/local/bin/easy-novnc
+COPY --from=turbovnc /opt/TurboVNC /opt/TurboVNC
 
 COPY supervisord.conf /etc/
 COPY advancedsettings.xml /usr/share/kodi
@@ -245,7 +249,10 @@ VOLUME /data
 
 CMD ["/docker-entrypoint.sh"]
 
-# noVNC
+# VNC
+EXPOSE 5900/tcp
+
+# HTTP (noVNC)
 EXPOSE 8000/tcp
 
 # Kodi HTTP API

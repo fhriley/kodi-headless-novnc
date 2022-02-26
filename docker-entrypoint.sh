@@ -3,6 +3,11 @@
 id -g app &>/dev/null || groupadd --gid $KODI_GID app
 id -u app &>/dev/null || useradd --home-dir /data --shell /bin/bash --uid $KODI_UID --gid $KODI_GID app
 
+if [ ! -f /data/.Xresources ]; then
+  touch /data/.Xresources
+  chown app:app /data/.Xresources
+fi
+
 mkdir -p /data/.kodi
 
 if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then
