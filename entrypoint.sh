@@ -27,6 +27,9 @@ if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then
       /usr/share/kodi/advancedsettings.xml > /data/.kodi/userdata/advancedsettings.xml
 fi
 
+export VNC_UID=${KODI_UID}
+export VNC_GID=${KODI_GID}
+
 chown -R app:app /data/.kodi
 chown app:app /dev/stdout
 exec gosu app supervisord
