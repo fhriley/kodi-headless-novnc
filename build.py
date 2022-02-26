@@ -4,8 +4,8 @@ import subprocess
 import shlex
 
 BASE_IMAGE = 'ubuntu:22.04'
-EASY_NOVNC_IMAGE = 'fhriley/easy-novnc:1.3.0'
-TURBOVNC_IMAGE = 'fhriley/turbovnc:2.2.7'
+NOVNC_BRANCH = 'v1.3.0'
+TURBOVNC_IMAGE = 'fhriley/turbovnc:main'
 IMAGE_NAME = 'fhriley/kodi-headless-novnc'
 PLATFORMS = ['linux/amd64', 'linux/arm64', 'linux/arm/v7']
 CACHE = f'type=registry,ref={IMAGE_NAME}:'
@@ -23,8 +23,10 @@ if __name__ == '__main__':
                         help='Add the --no-cache flag')
     parser.add_argument('-b', '--base', default=BASE_IMAGE,
                         help=f'the base image (default: "{BASE_IMAGE}" )')
-    parser.add_argument('-e', '--easy-novnc', default=EASY_NOVNC_IMAGE,
-                        help=f'the easy-novnc branch (default: "{EASY_NOVNC_IMAGE}" )')
+    parser.add_argument('-n', '--novnc-branch', default=NOVNC_BRANCH,
+                        help=f'the easy-novnc branch (default: "{NOVNC_BRANCH}" )')
+    parser.add_argument('-t', '--turbovnc-image', default=TURBOVNC_IMAGE,
+                        help=f'the turbonvnc branch (default: "{TURBOVNC_IMAGE}" )')
     parser.add_argument('-c', '--cache',
                         help='the tag to cache from (default: first tag argument)')
     parser.add_argument('-p', '--platform', nargs='+', default=PLATFORMS,
@@ -35,8 +37,8 @@ if __name__ == '__main__':
 
     build_args = [
         f'BASE_IMAGE={args.base}',
-        f'EASY_NOVNC_IMAGE={EASY_NOVNC_IMAGE}',
-        f'TURBOVNC_IMAGE={TURBOVNC_IMAGE}',
+        f'NOVNC_BRANCH={args.novnc_branch}',
+        f'TURBOVNC_IMAGE={args.turbovnc_image}',
         f'KODI_BRANCH={args.branch}',
     ]
 

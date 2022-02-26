@@ -8,6 +8,14 @@ if [ ! -f /data/.Xresources ]; then
   chown app:app /data/.Xresources
 fi
 
+if [ ! -f /data/.Xauthority ]; then
+  touch /data/.Xauthority
+  chown app:app /data/.Xauthority
+fi
+
+mkdir -p /data/.cache /var/log/nginx /var/lib/nginx
+chown -R app:app /data/.cache /var/log/nginx /var/lib/nginx
+
 mkdir -p /data/.kodi
 
 if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then

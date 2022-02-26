@@ -1,8 +1,6 @@
 ARG BASE_IMAGE="ubuntu:22.04"
-ARG EASY_NOVNC_IMAGE="fhriley/easy-novnc:1.3.0"
 ARG TURBOVNC_IMAGE="fhriley/turbovnc:2.2.7"
 
-FROM $EASY_NOVNC_IMAGE as easy-novnc
 FROM $TURBOVNC_IMAGE as turbovnc
 FROM $BASE_IMAGE as build
 
@@ -182,6 +180,11 @@ RUN install -Dm755 \
 	/tmp/xbmc/tools/EventClients/lib/python/xbmcclient.py \
 	/tmp/kodi-build/usr/lib/python3.8/xbmcclient.py
 
+ARG NOVNC_BRANCH=v1.3.0
+RUN cd /tmp \
+  && git clone --depth=1 --branch ${NOVNC_BRANCH} https://github.com/novnc/noVNC.git novnc \
+  && mkdir -p /opt/novnc \
+  && cp -r /tmp/novnc/vnc.html /tmp/novnc/package.json /tmp/novnc/app /tmp/novnc/core /tmp/novnc/vendor /opt/novnc/
 
 FROM $BASE_IMAGE
 
@@ -193,6 +196,7 @@ RUN apt-get update -y \
     ca-certificates \
     curl \
     gosu \
+    nginx-core \
     supervisor \
     samba-common-bin \
     xauth \
@@ -238,12 +242,13 @@ RUN curl -sfL -o /usr/local/share/ca-certificates/ZeroSSL.crt "https://crt.sh/?d
     && update-ca-certificates
 
 COPY --from=build /tmp/kodi-build/usr/ /usr/
-COPY --from=easy-novnc /usr/local/bin/easy-novnc /usr/local/bin/easy-novnc
+COPY --from=build /opt/novnc /usr/share/nginx/html/novnc
 COPY --from=turbovnc /opt/TurboVNC /opt/TurboVNC
 
 COPY supervisord.conf /etc/
 COPY advancedsettings.xml /usr/share/kodi
 COPY docker-entrypoint.sh /
+COPY nginx /etc/nginx
 
 VOLUME /data
 
