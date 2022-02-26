@@ -246,7 +246,7 @@ COPY --from=build /opt/novnc /usr/share/nginx/html/novnc
 COPY --from=turbovnc /opt/TurboVNC /opt/TurboVNC
 
 COPY supervisord.conf /etc/
-COPY advancedsettings.xml /usr/share/kodi
+COPY advancedsettings.xml /usr/share/kodi/
 COPY docker-entrypoint.sh /
 COPY nginx /etc/nginx
 
