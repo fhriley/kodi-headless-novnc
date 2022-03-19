@@ -1,16 +1,7 @@
 ARG BASE_IMAGE="ubuntu:22.04"
+ARG EASY_NOVNC_IMAGE="fhriley/easy-novnc:1.3.0"
 
-FROM golang:1.17-buster AS easy-novnc-build
-
-ARG EASY_NOVNC_BRANCH=v1.3.0
-
-RUN cd $GOPATH/src \
-  && git clone --depth=1 --branch ${EASY_NOVNC_BRANCH} https://github.com/fhriley/easy-novnc \
-  && cd $GOPATH/src/easy-novnc \
-  && go mod download \
-  && go build -o /bin/easy-novnc
-
-
+FROM $EASY_NOVNC_IMAGE as easy-novnc
 FROM $BASE_IMAGE as build
 
 ARG DEBIAN_FRONTEND="noninteractive"
@@ -131,7 +122,7 @@ RUN apt-get update -y \
     zlib1g-dev \
   && rm -rf /var/lib/apt/lists
 
-ARG KODI_BRANCH="19.3-Matrix"
+ARG KODI_BRANCH="19.4-Matrix"
 ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
 
 RUN cd /tmp \
@@ -198,6 +189,7 @@ RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     alsa-base \
     ca-certificates \
+    curl \
     gosu \
     supervisor \
     tigervnc-standalone-server \
@@ -222,7 +214,7 @@ RUN apt-get update -y \
     libmysqlclient21 \
     libnfs13 \
     libpcrecpp0v5 \
-    libpython3.8 \
+    libpython3.9 \
     libsmbclient \
     libtag1v5 \
     libtinyxml2.6.2v5 \
@@ -234,18 +226,26 @@ RUN apt-get update -y \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf
 
+# assets.fanart.tv uses a ZeroSSL cert
+RUN mkdir -p /usr/local/share/ca-certificates \
+  && curl -sfL -o /usr/local/share/ca-certificates/ZeroSSL.crt "https://crt.sh/?d=2427368505" \
+  && update-ca-certificates
+
 COPY --from=build /tmp/kodi-build/usr/ /usr/
-COPY --from=easy-novnc-build /bin/easy-novnc /usr/local/bin/
+COPY --from=easy-novnc /usr/local/bin/easy-novnc /usr/local/bin/easy-novnc
 
 COPY supervisord.conf /etc/
-COPY advancedsettings.xml /usr/share/kodi
+COPY advancedsettings.xml /usr/share/kodi/
 COPY docker-entrypoint.sh /
 
 VOLUME /data
 
 CMD ["/docker-entrypoint.sh"]
 
-# noVNC
+# VNC
+EXPOSE 5900/tcp
+
+# HTTP (noVNC)
 EXPOSE 8000/tcp
 
 # Kodi HTTP API

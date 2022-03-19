@@ -11,7 +11,7 @@ https://github.com/fhriley/kodi-headless-novnc
 
 This image has 2 major advantages over other headless images:
 
-1. The Kodi GUI is available in a web browser on port 8000, which means you don't need a
+1. The Kodi GUI is available in a web browser on port 8000 or over VNC on port 5900. This means you don't need a
 second "real" Kodi running to configure everything.
 
 2. This Kodi image does not use any patches to modify the code, which means it can easily
@@ -27,6 +27,7 @@ docker run --name=kodi-headless-novnc \
   -e KODI_DB_USER=<MY_KODI_DBUSER> \
   -e KODI_DB_PASS=<MY_KODI_DBPASS> \
   -e TZ=<MY_TIMEZONE> \
+  -p 5900:5900/tcp \
   -p 8000:8000/tcp \
   -p 8080:8080/tcp \
   -p 9090:9090/tcp \
@@ -45,6 +46,7 @@ services:
    restart: always
    init: true
    ports:
+     - "5900:5900/tcp"
      - "8000:8000/tcp"
      - "8080:8080/tcp"
      - "9090:9090/tcp"
@@ -60,10 +62,11 @@ services:
 
 **Ports**
 
-* `8000/tcp` - noVNC HTTP port (Kodi GUI)
-* `8080/tcp` - webui port
-* `9090/tcp` - websockets port
-* `9777/udp` - esall interface port
+* `5900/tcp` - VNC (Kodi GUI)
+* `8000/tcp` - noVNC HTTP (Kodi GUI)
+* `8080/tcp` - webui
+* `9090/tcp` - websockets
+* `9777/udp` - esall interface
 
 **Volumes**
 
@@ -83,8 +86,9 @@ services:
 
 | Tagname  | Branch  | Kodi version  | Base distro   | Architecture         |
 |----------|---------|---------------|---------------|----------------------|
-| `latest` | Matrix  | 19.3          | Ubuntu 22.04  | amd64, armv7, arm64  |
-| `Matrix` | Matrix  | 19.3          | Ubuntu 22.04  | amd64, armv7, arm64  |
+| `latest` | Matrix  | 19.4          | Ubuntu 22.04  | amd64, armv7, arm64  |
+| `Matrix` | Matrix  | 19.4          | Ubuntu 22.04  | amd64, armv7, arm64  |
+| `19.4`   | Matrix  | 19.4          | Ubuntu 22.04  | amd64, armv7, arm64  |
 | `19.3`   | Matrix  | 19.3          | Ubuntu 22.04  | amd64, armv7, arm64  |
 | `19.2`   | Matrix  | 19.2          | Ubuntu 20.04  | amd64                |
 | `19.1`   | Matrix  | 19.1          | Ubuntu 20.04  | amd64                |
