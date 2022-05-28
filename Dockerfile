@@ -14,7 +14,6 @@ RUN apt-get update -y \
     kodi \
     kodi-eventclients-kodi-send \
     samba-common-bin \
-    tigervnc-standalone-server \
     tzdata \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf \
