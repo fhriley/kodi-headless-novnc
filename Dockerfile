@@ -214,7 +214,7 @@ RUN apt-get update -y \
     libmysqlclient21 \
     libnfs13 \
     libpcrecpp0v5 \
-    libpython3.9 \
+    libpython3.10 \
     libsmbclient \
     libtag1v5 \
     libtinyxml2.6.2v5 \

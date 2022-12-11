@@ -87,11 +87,8 @@ services:
 | Tagname  | Branch  | Kodi version  | Base distro   | Architecture         |
 |----------|---------|---------------|---------------|----------------------|
 | `latest` | Matrix  | 19.4          | Ubuntu 22.04  | amd64, armv7, arm64  |
+| `Nexus ` | Nexus   | 20.0rc1       | Ubuntu 22.04  | amd64, armv7, arm64  |
 | `Matrix` | Matrix  | 19.4          | Ubuntu 22.04  | amd64, armv7, arm64  |
-| `19.4`   | Matrix  | 19.4          | Ubuntu 22.04  | amd64, armv7, arm64  |
-| `19.3`   | Matrix  | 19.3          | Ubuntu 22.04  | amd64, armv7, arm64  |
-| `19.2`   | Matrix  | 19.2          | Ubuntu 20.04  | amd64                |
-| `19.1`   | Matrix  | 19.1          | Ubuntu 20.04  | amd64                |
 
 Docker will automatically pull the correct architecture for your platform.
 
