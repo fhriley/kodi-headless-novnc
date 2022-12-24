@@ -216,6 +216,7 @@ RUN apt-get update -y \
     libpcrecpp0v5 \
     libpython3.10 \
     libsmbclient \
+    libspdlog1 \
     libtag1v5 \
     libtinyxml2.6.2v5 \
     libudf0 \
