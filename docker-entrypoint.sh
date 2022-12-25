@@ -3,7 +3,7 @@
 id -g app &>/dev/null || groupadd --gid $KODI_GID app
 id -u app &>/dev/null || useradd --home-dir /data --shell /bin/bash --uid $KODI_UID --gid $KODI_GID app
 
-mkdir -p /data/.kodi
+mkdir -p /data/.kodi /data/.cache /data/.config
 
 if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then
   mkdir -p /data/.kodi/userdata
@@ -14,6 +14,6 @@ if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then
       /usr/share/kodi/advancedsettings.xml > /data/.kodi/userdata/advancedsettings.xml
 fi
 
-chown -R app:app /data/.kodi
+chown -R app:app /data/.kodi /data/.cache /data/.config
 chown app:app /dev/stdout
 exec gosu app supervisord
