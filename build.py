@@ -9,6 +9,7 @@ IMAGE_NAME = 'fhriley/kodi-headless-novnc'
 PLATFORMS = ['linux/amd64', 'linux/arm64', 'linux/arm/v7']
 CACHE = f'type=registry,ref={IMAGE_NAME}:'
 BUILDX = 'docker buildx build {build_args} --platform {platforms} {tags} --cache-to type=inline,mode=max {push} {load} {no_cache} .'
+PYTHON_VERSION = '3.10'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=f'Build {IMAGE_NAME}')
@@ -36,6 +37,7 @@ if __name__ == '__main__':
         f'BASE_IMAGE={args.base}',
         f'EASY_NOVNC_IMAGE={EASY_NOVNC_IMAGE}',
         f'KODI_BRANCH={args.branch}',
+        f'PYTHON_VERSION={PYTHON_VERSION}',
     ]
 
     buildx = BUILDX.format(

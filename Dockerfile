@@ -173,17 +173,20 @@ RUN set -ex \
 	ADDONS="$KODI_ADDONS" \
 	PREFIX=/tmp/kodi-build/usr
 
+ARG PYTHON_VERSION=3.10
+
 RUN install -Dm755 \
 	/tmp/xbmc/tools/EventClients/Clients/KodiSend/kodi-send.py \
 	/tmp/kodi-build/usr/bin/kodi-send \
  && install -Dm644 \
 	/tmp/xbmc/tools/EventClients/lib/python/xbmcclient.py \
-	/tmp/kodi-build/usr/lib/python3.8/xbmcclient.py
+	/tmp/kodi-build/usr/lib/python${PYTHON_VERSION}/xbmcclient.py
 
 
 FROM $BASE_IMAGE
 
 ARG DEBIAN_FRONTEND="noninteractive"
+ARG PYTHON_VERSION=3.10
 
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
@@ -214,7 +217,7 @@ RUN apt-get update -y \
     libmysqlclient21 \
     libnfs13 \
     libpcrecpp0v5 \
-    libpython3.10 \
+    libpython${PYTHON_VERSION} \
     libsmbclient \
     libspdlog1 \
     libtag1v5 \
