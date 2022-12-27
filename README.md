@@ -72,7 +72,9 @@ services:
 
 ### Volumes
 
-* `/data` - path for kodi data and configuration files
+| Path    | Description                                |
+|---------|--------------------------------------------|
+| `/data` | path for kodi data and configuration files |
 
 ### Environment Variables
 
