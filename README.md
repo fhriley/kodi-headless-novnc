@@ -62,11 +62,13 @@ services:
 
 **Ports**
 
-* `5900/tcp` - VNC (Kodi GUI)
-* `8000/tcp` - noVNC HTTP (Kodi GUI)
-* `8080/tcp` - webui
-* `9090/tcp` - websockets
-* `9777/udp` - esall interface
+| Port     | Description             |
+|----------|-------------------------|
+| `5900/tcp` | VNC (Kodi GUI)        |
+| `8000/tcp` | noVNC HTTP (Kodi GUI) |
+| `8080/tcp` | webui                 |
+| `9090/tcp` | websockets            |
+| `9777/udp` | esall interface       |
 
 **Volumes**
 
@@ -74,20 +76,22 @@ services:
 
 **Environment Variables**
 
-* `KODI_DB_HOST` - MySQL database host address (default `mysql`)
-* `KODI_DB_USER` - MySQL user for Kodi (default `kodi`)
-* `KODI_DB_PASS` - MySQL password for Kodi user (default `kodi`)
-* `KODI_DB_PORT` - MySQL remote port (default `3306`)
-* `KODI_UID` - The user ID to run all processes in the container under (default `2000`)
-* `KODI_GID` - The group ID to run all processes in the container under (default `2000`)
-* `TZ` - The timezone to use in the container (default `UTC`)
+| Variable       | Description                                                               |
+|----------------|---------------------------------------------------------------------------|
+| `KODI_DB_HOST` | MySQL database host address (default `mysql`)                             |
+| `KODI_DB_USER` | MySQL user for Kodi (default `kodi`)                                      |
+| `KODI_DB_PASS` | MySQL password for Kodi user (default `kodi`)                             |
+| `KODI_DB_PORT` | MySQL remote port (default `3306`)                                        |
+| `KODI_UID`     | The user ID to run all processes in the container under (default `2000`)  |
+| `KODI_GID`     | The group ID to run all processes in the container under (default `2000`) |
+| `TZ`           | The timezone to use in the container (default `UTC`)                      |
 
 ## Tags
 
 | Tagname  | Branch  | Architecture         |
 |----------|---------|----------------------|
 | `latest` | Matrix  | amd64, armv7, arm64  |
-| `Nexus ` | Nexus   | amd64, armv7, arm64  |
+| `Nexus`  | Nexus   | amd64, armv7, arm64  |
 | `Matrix` | Matrix  | amd64, armv7, arm64  |
 
 Docker will automatically pull the correct architecture for your platform.
