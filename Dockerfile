@@ -122,8 +122,7 @@ RUN apt-get update -y \
     zlib1g-dev \
   && rm -rf /var/lib/apt/lists
 
-ARG KODI_BRANCH="19.4-Matrix"
-ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
+ARG KODI_BRANCH="master"
 
 RUN cd /tmp \
  && git clone --depth=1 --branch ${KODI_BRANCH} https://github.com/xbmc/xbmc.git
@@ -166,6 +165,8 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_VDPAU=OFF \
  && make -j $(nproc) \
  && make DESTDIR=/tmp/kodi-build install
+
+ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
 
 RUN set -ex \
  && cd /tmp/xbmc \
