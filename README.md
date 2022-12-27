@@ -99,12 +99,14 @@ host OS and the container. We avoid this issue by allowing you to specify the us
 and group `KODI_GID`. Ensure the data volume directory on the host is owned by the same user
 you specify and it will "just work" ™.
 
-In this instance `KODI_UID=1001` and `KODI_GID=1001`. To find yours use `id user` as below:
+To find yours use `id user` as below:
 
 ```
   $ id <dockeruser>
     uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
 ```
+
+In this instance `KODI_UID=1001` and `KODI_GID=1001`.
 
 ## Setting up the application
 
