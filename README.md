@@ -60,7 +60,7 @@ services:
      - ./kodi_data:/data
 ```
 
-**Ports**
+### Ports
 
 | Port     | Description             |
 |----------|-------------------------|
@@ -70,11 +70,11 @@ services:
 | `9090/tcp` | websockets            |
 | `9777/udp` | esall interface       |
 
-**Volumes**
+### Volumes
 
 * `/data` - path for kodi data and configuration files
 
-**Environment Variables**
+### Environment Variables
 
 | Variable       | Description                                                               |
 |----------------|---------------------------------------------------------------------------|
