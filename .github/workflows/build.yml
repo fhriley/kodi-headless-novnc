@@ -73,5 +73,5 @@ jobs:
               CXXFLAGS=${{ inputs.cflags }}
               WITH_CPU=${{ inputs.with_cpu }}
           tags: fhriley/kodi-headless-novnc:${{ inputs.version }}-${{ inputs.tag }}
-          cache-from: type=registry,ref=fhriley/kodi-headless-novnc:buildcache
-          cache-to: type=registry,mode=max,ref=fhriley/kodi-headless-novnc:buildcache
+          cache-from: type=registry,ref=fhriley/kodi-headless-novnc:buildcache-${{ inputs.tag }}
+          cache-to: type=registry,mode=max,ref=fhriley/kodi-headless-novnc:buildcache-${{ inputs.tag }}
