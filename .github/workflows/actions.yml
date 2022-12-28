@@ -32,7 +32,7 @@ jobs:
   build_arm64:
     uses: ./.github/workflows/build.yml
     with:
-      runs_on: buildjet-4vcpu-ubuntu-2204-arm
+      runs_on: buildjet-2vcpu-ubuntu-2204-arm
       platform: linux/arm64
       tag: arm64
       version: ${{ github.event.inputs.version }}
@@ -42,7 +42,7 @@ jobs:
   build_arm32:
     uses: ./.github/workflows/build.yml
     with:
-      runs_on: buildjet-4vcpu-ubuntu-2204-arm
+      runs_on: buildjet-2vcpu-ubuntu-2204-arm
       platform: linux/arm/v7
       tag: arm32
       version: ${{ github.event.inputs.version }}
