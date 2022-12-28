@@ -232,11 +232,6 @@ RUN apt-get update -y \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf
 
-# assets.fanart.tv uses a ZeroSSL cert
-RUN mkdir -p /usr/local/share/ca-certificates \
-  && curl -sfL -o /usr/local/share/ca-certificates/ZeroSSL.crt "https://crt.sh/?d=2427368505" \
-  && update-ca-certificates
-
 COPY --from=build /tmp/kodi-build/usr/ /usr/
 COPY --from=easy-novnc /usr/local/bin/easy-novnc /usr/local/bin/easy-novnc
 
