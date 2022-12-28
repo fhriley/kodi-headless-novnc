@@ -127,13 +127,18 @@ ARG KODI_BRANCH="master"
 RUN cd /tmp \
  && git clone --depth=1 --branch ${KODI_BRANCH} https://github.com/xbmc/xbmc.git
 
+ARG CFLAGS=
+ARG CXXFLAGS=
+ARG WITH_CPU=
+
 RUN mkdir -p /tmp/xbmc/build \
   && cd /tmp/xbmc/build \
-  && cmake ../. \
+  && CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" cmake ../. \
+    ${WITH_CPU} \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DAPP_RENDER_SYSTEM=gl \
-    -DCORE_PLATFORM_NAME="x11" \
+    -DCORE_PLATFORM_NAME=x11 \
     -DENABLE_AIRTUNES=OFF \
     -DENABLE_ALSA=ON \
     -DENABLE_AVAHI=OFF \
