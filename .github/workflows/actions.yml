@@ -11,6 +11,11 @@ on:
         description: 'The Kodi name'
         required: true
         default: 'Matrix'
+      latest:
+        descriptions: 'Tag as latest?'
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   build_amd64:
@@ -59,6 +64,6 @@ jobs:
         name: Create and push manifest images
         uses: Noelware/docker-manifest-action@master
         with:
-          base-image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.name }}
+          base-image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.name }}${{ (github.event.inputs.latest && ',fhriley/kodi-headless-novnc:latest') || '' }}
           extra-images: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm32
           push: true
