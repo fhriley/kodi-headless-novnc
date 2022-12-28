@@ -16,7 +16,6 @@ jobs:
   build_amd64:
     uses: ./.github/workflows/build.yml
     with:
-      env: ${{ github.event.inputs.environment }}
       runs_on: ubuntu-22.04
       platform: linux/amd64
       tag: amd64
