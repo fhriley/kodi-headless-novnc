@@ -6,22 +6,27 @@ on:
       runs_on:
         description: 'The runner to run on'
         required: true
+        type: string
         default: 'ubuntu-22.04'
       platform:
         description: 'The buildx platform'
         required: true
+        type: string
         default: 'linux/amd64'
       tag:
         description: 'The docker tag to add for the platform'
         required: true
+        type: string
         default: 'amd64'
       version:
         description: 'The Kodi version'
         required: true
+        type: string
         default: '19.5'
       name:
         description: 'The Kodi name'
         required: true
+        type: string
         default: 'Matrix'
 
 jobs:
