@@ -61,7 +61,6 @@ jobs:
               EASY_NOVNC_IMAGE=fhriley/easy-novnc:1.3.0
               PYTHON_VERSION=3.10
               KODI_BRANCH=${{ inputs.version }}-${{ inputs.codename }}
-              BUILDKIT_INLINE_CACHE=1
           tags: fhriley/kodi-headless-novnc:${{ inputs.version }}-${{ inputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
