@@ -47,8 +47,9 @@ jobs:
 
       -
         name: build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
+          context: .
           pull: true
           push: true
           platforms: ${{ inputs.platform }}
@@ -59,4 +60,5 @@ jobs:
               KODI_BRANCH=${{ inputs.version }}-${{ inputs.codename }}
               BUILDKIT_INLINE_CACHE=1
           tags: fhriley/kodi-headless-novnc:${{ inputs.version }}-${{ inputs.tag }}
-          cache-from: type=registry,ref=fhriley/kodi-headless-novnc:${{ inputs.codename }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
