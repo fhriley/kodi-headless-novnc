@@ -228,6 +228,7 @@ RUN apt-get update -y \
     libxrandr2 \
     libxslt1.1 \
     libplist3 \
+    tzdata \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf
 
