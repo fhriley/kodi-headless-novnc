@@ -14,18 +14,15 @@ on:
 
 jobs:
   build_amd64:
-    steps:
-      -
-        name: build
-        uses: ./.github/workflows/build.yml
-        with:
-          env: ${{ github.event.inputs.environment }}
-          runs_on: ubuntu-22.04
-          platform: linux/amd64
-          tag: amd64
-          version: ${{ github.event.inputs.version }}
-          name: ${{ github.event.inputs.name }}
-        secrets: inherit
+    uses: ./.github/workflows/build.yml
+    with:
+      env: ${{ github.event.inputs.environment }}
+      runs_on: ubuntu-22.04
+      platform: linux/amd64
+      tag: amd64
+      version: ${{ github.event.inputs.version }}
+      name: ${{ github.event.inputs.name }}
+    secrets: inherit
 
 #   combine:
 #     needs: [build_amd64, build_arm64, build_arm32]
