@@ -6,15 +6,16 @@ on:
       version:
         description: 'The Kodi version'
         required: true
+        type: string
         default: '19.5'
-      name:
-        description: 'The Kodi name'
+      codename:
+        description: 'The Kodi codename'
         required: true
+        type: string
         default: 'Matrix'
-      latest:
+      tag_latest:
         description: 'Tag as latest'
         required: true
-        default: false
         type: boolean
 
 jobs:
@@ -25,7 +26,7 @@ jobs:
       platform: linux/amd64
       tag: amd64
       version: ${{ github.event.inputs.version }}
-      name: ${{ github.event.inputs.name }}
+      codename: ${{ github.event.inputs.codename }}
     secrets: inherit
 
   build_arm64:
@@ -35,7 +36,7 @@ jobs:
       platform: linux/arm64
       tag: arm64
       version: ${{ github.event.inputs.version }}
-      name: ${{ github.event.inputs.name }}
+      codename: ${{ github.event.inputs.codename }}
     secrets: inherit
 
   build_arm32:
@@ -45,7 +46,7 @@ jobs:
       platform: linux/arm/v7
       tag: arm32
       version: ${{ github.event.inputs.version }}
-      name: ${{ github.event.inputs.name }}
+      codename: ${{ github.event.inputs.codename }}
     secrets: inherit
 
   combine:
@@ -64,6 +65,6 @@ jobs:
         name: Create and push manifest images
         uses: Noelware/docker-manifest-action@master
         with:
-          base-image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.name }}${{ (github.event.inputs.latest && ', fhriley/kodi-headless-novnc:latest') || '' }}
+          base-image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.codename }}${{ (github.event.inputs.tag_latest == 'true' && ', fhriley/kodi-headless-novnc:latest') || '' }}
           extra-images: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm32
           push: true
