@@ -61,4 +61,4 @@ jobs:
         with:
           base-image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.name }}
           extra-images: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm32
-          push: false
+          push: true
