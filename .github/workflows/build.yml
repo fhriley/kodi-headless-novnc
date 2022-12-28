@@ -62,5 +62,5 @@ jobs:
               PYTHON_VERSION=3.10
               KODI_BRANCH=${{ inputs.version }}-${{ inputs.codename }}
           tags: fhriley/kodi-headless-novnc:${{ inputs.version }}-${{ inputs.tag }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=$GITHUB_REF_NAME-${{ inputs.tag }}
+          cache-to: type=gha,mode=max,scope=$GITHUB_REF_NAME-${{ inputs.tag }}
