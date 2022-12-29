@@ -203,14 +203,11 @@ RUN apt-get update -y \
     supervisor \
     tigervnc-standalone-server \
     samba-common-bin \
+    libass9 \
     libavcodec58 \
     libavfilter7 \
     libavformat58 \
     libavutil56 \
-    libswscale5 \
-    libswresample3 \
-    libpostproc55 \
-    libass9 \
     libcurl4 \
     libegl1 \
     libfmt8 \
@@ -223,16 +220,19 @@ RUN apt-get update -y \
     libmysqlclient21 \
     libnfs13 \
     libpcrecpp0v5 \
+    libplist3 \
+    libpostproc55 \
     libpython${PYTHON_VERSION} \
     libsmbclient \
     libspdlog1 \
+    libswresample3 \
+    libswscale5 \
     libtag1v5 \
     libtinyxml2.6.2v5 \
     libudf0 \
     libudfread0 \
     libxrandr2 \
     libxslt1.1 \
-    libplist3 \
     tzdata \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf
