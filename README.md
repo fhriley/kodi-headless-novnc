@@ -20,7 +20,7 @@ be updated to any new versions of Kodi.
 ## Usage
 
 ```bash
-docker run --name=kodi-headless-novnc \
+docker run --name=kodi-headless-novnc:Nexus \
   -d --init \
   -v <MY_DATA_PATH>:/data \
   -e KODI_DB_HOST=<MY_KODI_DBHOST> \
@@ -42,7 +42,7 @@ version: "3"
 
 services:
   kodi:
-   image: fhriley/kodi-headless-novnc
+   image: fhriley/kodi-headless-novnc:Nexus
    restart: always
    init: true
    ports:
