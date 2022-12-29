@@ -90,13 +90,13 @@ services:
 
 ## Tags
 
-| Tagname  | Branch  | Architecture         |
-|----------|---------|----------------------|
-| `latest` | Matrix  | amd64, armv7, arm64  |
-| `Nexus`  | Nexus   | amd64, armv7, arm64  |
-| `Matrix` | Matrix  | amd64, armv7, arm64  |
+| Tag      | Codename | Architecture         |
+|----------|----------|----------------------|
+| `latest` | Matrix   | amd64, armv7, arm64  |
+| `Nexus`  | Nexus    | amd64, armv7, arm64  |
+| `Matrix` | Matrix   | amd64, armv7, arm64  |
 
-Docker will automatically pull the correct architecture for your platform.
+It is **strongly** recommended that you use the codename tag rather than `latest`. Docker will automatically pull the correct architecture for your platform.
 
 ## User / Group Identifiers
 
