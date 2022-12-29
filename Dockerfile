@@ -37,8 +37,6 @@ RUN apt-get update -y \
     libbz2-dev \
     libcdio++-dev \
     libcdio-dev \
-    libcec-dev \
-    libcrossguid-dev \
     libcurl4-openssl-dev \
     libcwiid-dev \
     libdav1d-dev \
@@ -60,12 +58,10 @@ RUN apt-get update -y \
     libglu1-mesa-dev \
     libgnutls28-dev \
     libgpg-error-dev \
-    libgtest-dev  \
     libinput-dev \
     libiso9660++-dev \
     libiso9660-dev \
     libjpeg-dev \
-    liblcms2-dev \
     liblirc-dev \
     libltdl-dev \
     liblzo2-dev \
@@ -128,6 +124,7 @@ RUN mkdir -p /tmp/xbmc/build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DAPP_RENDER_SYSTEM=gl \
     -DCORE_PLATFORM_NAME=x11 \
+    -DFFMPEG_PATH=/usr \
     -DENABLE_AIRTUNES=OFF \
     -DENABLE_ALSA=ON \
     -DENABLE_AVAHI=OFF \
@@ -137,18 +134,18 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_CEC=OFF \
     -DENABLE_DBUS=OFF \
     -DENABLE_DVDCSS=OFF \
+    -DENABLE_EVENTCLIENTS=OFF \
     -DENABLE_GLX=ON \
-    -DFFMPEG_PATH=/usr \
+    -DENABLE_LCMS2=OFF \
     -DENABLE_LIBUSB=OFF \
+    -DENABLE_LIRCCLIENT=OFF \
     -DENABLE_NFS=ON \
     -DENABLE_OPTICAL=OFF \
     -DENABLE_PULSEAUDIO=OFF \
     -DENABLE_SNDIO=OFF \
+    -DENABLE_TESTING=OFF \
     -DENABLE_UDEV=OFF \
     -DENABLE_UPNP=ON \
-    -DENABLE_LCMS2=OFF \
-    -DENABLE_EVENTCLIENTS=OFF \
-    -DENABLE_LIRCCLIENT=OFF \
     -DENABLE_VAAPI=OFF \
     -DENABLE_VDPAU=OFF \
  && make -j $(nproc) \
