@@ -54,7 +54,6 @@ jobs:
   combine:
     needs: [build_amd64, build_arm64, build_arm32]
     runs-on: ubuntu-22.04
-
     steps:
       -
         name: Login to DockerHub
@@ -70,3 +69,14 @@ jobs:
           base-image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.codename }}${{ (github.event.inputs.tag_latest == 'true' && ', fhriley/kodi-headless-novnc:latest') || '' }}
           extra-images: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm32
           push: true
+
+  test:
+    needs: [combine]
+    runs-on: ubuntu-22.04
+    container:
+      image: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}
+    steps:
+      -
+        name: Check Missing Libraries
+        run: |
+          ldd /usr/lib/kodi/kodi-x11 | ( ! grep -i "not found" )

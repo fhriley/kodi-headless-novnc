@@ -18,6 +18,7 @@ RUN apt-get update -y \
     cpp  \
     curl \
     default-jre \
+    default-libmysqlclient-dev \
     flatbuffers-compiler \
     flatbuffers-compiler-dev \
     g++  \
@@ -37,6 +38,7 @@ RUN apt-get update -y \
     libbz2-dev \
     libcdio++-dev \
     libcdio-dev \
+    libcrossguid-dev \
     libcurl4-openssl-dev \
     libcwiid-dev \
     libdav1d-dev \
@@ -62,11 +64,10 @@ RUN apt-get update -y \
     libiso9660++-dev \
     libiso9660-dev \
     libjpeg-dev \
-    liblirc-dev \
+    libkissfft-dev \
     libltdl-dev \
     liblzo2-dev \
     libmicrohttpd-dev \
-    libmysqlclient-dev \
     libnfs-dev \
     libogg-dev \
     libomxil-bellagio-dev \
@@ -134,6 +135,9 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_CEC=OFF \
     -DENABLE_DBUS=OFF \
     -DENABLE_DVDCSS=OFF \
+    -DENABLE_INTERNAL_CROSSGUID=OFF \
+    -DENABLE_INTERNAL_KISSFFT=OFF \
+    -DENABLE_INTERNAL_RapidJSON=OFF \
     -DENABLE_EVENTCLIENTS=OFF \
     -DENABLE_GLX=ON \
     -DENABLE_LCMS2=OFF \
@@ -150,14 +154,6 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_VDPAU=OFF \
  && make -j $(nproc) \
  && make DESTDIR=/tmp/kodi-build install
-
-ARG KODI_ADDONS="vfs.libarchive vfs.rar vfs.sftp"
-
-RUN set -ex \
- && cd /tmp/xbmc \
- && make -j$(nproc) -C tools/depends/target/binary-addons \
-	ADDONS="$KODI_ADDONS" \
-	PREFIX=/tmp/kodi-build/usr
 
 ARG PYTHON_VERSION=3.10
 
@@ -185,12 +181,14 @@ RUN apt-get update -y \
     libavfilter7 \
     libavformat58 \
     libavutil56 \
+    libcrossguid0 \
     libcurl4 \
     libegl1 \
     libfmt8 \
     libfstrcmp0 \
     libgl1 \
     libiso9660-11 \
+    libkissfft-float131 \
     liblzo2-2 \
     libmicrohttpd12 \
     libmysqlclient21 \
