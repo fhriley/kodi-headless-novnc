@@ -10,53 +10,45 @@ RUN apt-get update -y \
   && apt purge kodi* \
   && apt-get update -y \
   && apt-get install -y \
+    autoconf \
+    automake \
+    autopoint \
+    autotools-dev \
+    cmake \
+    cpp  \
+    curl \
+    default-jre \
+    flatbuffers-compiler \
+    flatbuffers-compiler-dev \
+    g++  \
+    gawk \
+    gcc  \
+    gdc \
+    gettext \
+    git \
+    gperf \
+    libasound2-dev \
+    libass-dev  \
     libavcodec-dev \
     libavfilter-dev \
     libavformat-dev \
     libavutil-dev \
-    libswscale-dev \
-    libswresample-dev \
-    libpostproc-dev \
-    libdav1d-dev \
-    flatbuffers-compiler \
-    flatbuffers-compiler-dev \
-    git \
-    autoconf \
-    automake \
-    autopoint \
-    gettext \
-    autotools-dev \
-    cmake \
-    curl \
-    default-jre \
-    gawk \
-    gcc  \
-    g++  \
-    cpp  \
-    libflatbuffers-dev \
-    gdc \
-    gperf \
-    libasound2-dev \
-    libass-dev  \
-    libavahi-client-dev \
-    libavahi-common-dev \
-    libbluetooth-dev \
     libbluray-dev \
     libbz2-dev \
-    libcdio-dev \
     libcdio++-dev \
+    libcdio-dev \
     libcec-dev \
-    libp8-platform-dev \
     libcrossguid-dev \
     libcurl4-openssl-dev \
     libcwiid-dev \
+    libdav1d-dev \
     libdrm-dev \
-    libdbus-1-dev \
     libegl1-mesa-dev \
     libenca-dev \
     libflac-dev \
-    libfontconfig-dev \
+    libflatbuffers-dev \
     libfmt-dev  \
+    libfontconfig-dev \
     libfreetype6-dev \
     libfribidi-dev \
     libfstrcmp-dev \
@@ -70,8 +62,8 @@ RUN apt-get update -y \
     libgpg-error-dev \
     libgtest-dev  \
     libinput-dev \
-    libiso9660-dev \
     libiso9660++-dev \
+    libiso9660-dev \
     libjpeg-dev \
     liblcms2-dev \
     liblirc-dev \
@@ -82,34 +74,31 @@ RUN apt-get update -y \
     libnfs-dev \
     libogg-dev \
     libomxil-bellagio-dev \
+    libp8-platform-dev \
     libpcre3-dev \
     libplist-dev \
     libpng-dev \
-    libpulse-dev \
+    libpostproc-dev \
     libsmbclient-dev \
     libspdlog-dev  \
     libsqlite3-dev \
     libssh-dev \
     libssl-dev \
+    libswresample-dev \
+    libswscale-dev \
     libtag1-dev \
     libtiff5-dev \
     libtinyxml-dev \
     libtool \
-    libudev-dev \
     libunistring-dev \
-    libva-dev \
-    libvdpau-dev \
     libvorbis-dev \
     libxkbcommon-dev \
     libxmu-dev \
     libxrandr-dev \
     libxslt1-dev \
     libxt-dev \
-    meson \
-    ninja-build \
-    waylandpp-dev \
-    wayland-protocols \
     lsb-release \
+    meson \
     nasm \
     python3-dev \
     python3-pil \
@@ -143,19 +132,13 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_ALSA=ON \
     -DENABLE_AVAHI=OFF \
     -DENABLE_BLUETOOTH=OFF \
-    -DENABLE_BLURAY=OFF \
+    -DENABLE_BLURAY=ON \
     -DENABLE_CAP=OFF \
     -DENABLE_CEC=OFF \
     -DENABLE_DBUS=OFF \
     -DENABLE_DVDCSS=OFF \
     -DENABLE_GLX=ON \
     -DFFMPEG_PATH=/usr \
-    -DENABLE_INTERNAL_FFMPEG=OFF \
-    -DENABLE_INTERNAL_DAV1D=OFF \
-    -DENABLE_INTERNAL_FLATBUFFERS=OFF \
-    -DENABLE_INTERNAL_FMT=OFF \
-    -DENABLE_INTERNAL_SPDLOG=OFF \
-    -DENABLE_INTERNAL_GTEST=OFF \
     -DENABLE_LIBUSB=OFF \
     -DENABLE_NFS=ON \
     -DENABLE_OPTICAL=OFF \
@@ -200,9 +183,6 @@ RUN apt-get update -y \
     ca-certificates \
     curl \
     gosu \
-    supervisor \
-    tigervnc-standalone-server \
-    samba-common-bin \
     libass9 \
     libavcodec58 \
     libavfilter7 \
@@ -215,7 +195,6 @@ RUN apt-get update -y \
     libgl1 \
     libiso9660-11 \
     liblzo2-2 \
-    libmariadbd19 \
     libmicrohttpd12 \
     libmysqlclient21 \
     libnfs13 \
@@ -233,6 +212,10 @@ RUN apt-get update -y \
     libudfread0 \
     libxrandr2 \
     libxslt1.1 \
+    python3-minimal \
+    samba-common-bin \
+    supervisor \
+    tigervnc-standalone-server \
     tzdata \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf
