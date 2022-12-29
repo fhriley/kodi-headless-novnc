@@ -20,7 +20,7 @@ be updated to any new versions of Kodi.
 ## Usage
 
 ```bash
-docker run --name=kodi-headless-novnc:Nexus \
+docker run --name=kodi-headless-novnc \
   -d --init \
   -v <MY_DATA_PATH>:/data \
   -e KODI_DB_HOST=<MY_KODI_DBHOST> \
@@ -32,7 +32,7 @@ docker run --name=kodi-headless-novnc:Nexus \
   -p 8080:8080/tcp \
   -p 9090:9090/tcp \
   -p 9777:9777/udp \
-  fhriley/kodi-headless-novnc:latest
+  fhriley/kodi-headless-novnc:Nexus
 ```
 
 Docker compose example:
