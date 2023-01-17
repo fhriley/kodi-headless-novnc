@@ -86,13 +86,14 @@ services:
 | `KODI_DB_PORT` | MySQL remote port (default `3306`)                                        |
 | `KODI_UID`     | The user ID to run all processes in the container under (default `2000`)  |
 | `KODI_GID`     | The group ID to run all processes in the container under (default `2000`) |
+| `KODI_UMASK`   | The umask to run all processes in the container under (default `002`)     |
 | `TZ`           | The timezone to use in the container (default `UTC`)                      |
 
 ## Tags
 
 | Tag      | Codename | Architecture         |
 |----------|----------|----------------------|
-| `latest` | Matrix   | amd64, armv7, arm64  |
+| `latest` | Nexus    | amd64, armv7, arm64  |
 | `Nexus`  | Nexus    | amd64, armv7, arm64  |
 | `Matrix` | Matrix   | amd64, armv7, arm64  |
 

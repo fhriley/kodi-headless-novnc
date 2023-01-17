@@ -1,7 +1,11 @@
 #!/bin/bash
 
-id -g app &>/dev/null || groupadd --gid $KODI_GID app
-id -u app &>/dev/null || useradd --home-dir /data --shell /bin/bash --uid $KODI_UID --gid $KODI_GID app
+KODI_UID=${KODI_UID:-2000}
+KODI_GID=${KODI_GID:-2000}
+KODI_UMASK=${KODI_UMASK:-002}
+
+groupmod -o -g "$KODI_GID" app
+usermod -o -u "$KODI_UID" app
 
 mkdir -p /data/.kodi /data/.cache /data/.config
 

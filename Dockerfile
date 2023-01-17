@@ -243,12 +243,16 @@ EXPOSE 9777/udp
 
 VOLUME /data
 
+RUN groupadd --gid 2000 app && \
+  useradd --home-dir /data --shell /bin/bash --uid 2000 --gid 2000 app
+
 ENV KODI_UID=2000
 ENV KODI_GID=2000
 ENV KODI_DB_HOST=mysql
 ENV KODI_DB_PORT=3306
 ENV KODI_DB_USER=kodi
 ENV KODI_DB_PASS=kodi
+ENV KODI_UMASK=002
 
 HEALTHCHECK --start-period=5s --interval=30s --retries=1 --timeout=5s \
   CMD /usr/bin/supervisorctl status all >/dev/null || exit 1
