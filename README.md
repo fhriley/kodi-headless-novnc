@@ -158,3 +158,7 @@ Now, the below magic is done in Kodis advancedsettings.xml
 That's it. 
 Now instead of always needing to scan over smb://, it will replace that with /media and scan much quicker.
 When it does find new items, they are correctly stored in the SQL using their smb:// path
+
+## Kodi crashes
+
+If Kodi immediately crashes upon container startup, please see the [following](https://docs.linuxserver.io/faq#libseccomp) for a possible fix.
