@@ -18,6 +18,6 @@ if [ ! -f /data/.kodi/userdata/advancedsettings.xml ]; then
       /usr/share/kodi/advancedsettings.xml > /data/.kodi/userdata/advancedsettings.xml
 fi
 
-chown -R app:app /data/.kodi /data/.cache /data/.config
+chown -R app:app /data
 chown app:app /dev/stdout
 exec gosu app supervisord
