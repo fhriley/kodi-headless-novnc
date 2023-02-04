@@ -22,12 +22,12 @@ on:
         description: 'The Kodi version'
         required: true
         type: string
-        default: '19.5'
+        default: '20.0'
       codename:
         description: 'The Kodi codename'
         required: true
         type: string
-        default: 'Matrix'
+        default: 'Nexus'
       cflags:
         description: 'C and CXX flags for cmake'
         type: string
