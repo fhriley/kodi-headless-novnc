@@ -7,12 +7,12 @@ on:
         description: 'The Kodi version'
         required: true
         type: string
-        default: '19.5'
+        default: '20.0'
       codename:
         description: 'The Kodi codename'
         required: true
         type: string
-        default: 'Matrix'
+        default: 'Nexus'
       tag_latest:
         description: 'Tag as latest'
         required: true
