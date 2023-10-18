@@ -30,10 +30,6 @@ RUN apt-get update -y \
     gperf \
     libasound2-dev \
     libass-dev  \
-    libavcodec-dev \
-    libavfilter-dev \
-    libavformat-dev \
-    libavutil-dev \
     libbluray-dev \
     libbz2-dev \
     libcdio++-dev \
@@ -75,17 +71,15 @@ RUN apt-get update -y \
     libpcre3-dev \
     libplist-dev \
     libpng-dev \
-    libpostproc-dev \
     libsmbclient-dev \
     libspdlog-dev  \
     libsqlite3-dev \
     libssh-dev \
     libssl-dev \
-    libswresample-dev \
-    libswscale-dev \
     libtag1-dev \
     libtiff5-dev \
     libtinyxml-dev \
+    libtinyxml2-dev \
     libtool \
     libunistring-dev \
     libvorbis-dev \
@@ -125,7 +119,6 @@ RUN mkdir -p /tmp/xbmc/build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DAPP_RENDER_SYSTEM=gl \
     -DCORE_PLATFORM_NAME=x11 \
-    -DFFMPEG_PATH=/usr \
     -DENABLE_AIRTUNES=OFF \
     -DENABLE_ALSA=ON \
     -DENABLE_AVAHI=OFF \
@@ -135,6 +128,7 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_CEC=OFF \
     -DENABLE_DBUS=OFF \
     -DENABLE_DVDCSS=OFF \
+    -DENABLE_INTERNAL_FFMPEG=ON \
     -DENABLE_INTERNAL_CROSSGUID=OFF \
     -DENABLE_INTERNAL_KISSFFT=OFF \
     -DENABLE_INTERNAL_RapidJSON=OFF \
@@ -176,13 +170,12 @@ RUN apt-get update -y \
     ca-certificates \
     curl \
     gosu \
+    libasound2 \
     libass9 \
-    libavcodec58 \
-    libavfilter7 \
-    libavformat58 \
-    libavutil56 \
+    libbluray2 \
     libcrossguid0 \
     libcurl4 \
+    libdav1d5 \
     libegl1 \
     libfmt8 \
     libfstrcmp0 \
@@ -195,14 +188,12 @@ RUN apt-get update -y \
     libnfs13 \
     libpcrecpp0v5 \
     libplist3 \
-    libpostproc55 \
     libpython${PYTHON_VERSION} \
     libsmbclient \
     libspdlog1 \
-    libswresample3 \
-    libswscale5 \
     libtag1v5 \
     libtinyxml2.6.2v5 \
+    libtinyxml2-9 \
     libudf0 \
     libudfread0 \
     libxrandr2 \
