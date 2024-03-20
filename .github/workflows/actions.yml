@@ -70,6 +70,16 @@ jobs:
           extra-images: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64,fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm32
           push: true
 
+      - 
+        name: Create and push manifest images
+        uses: int128/docker-manifest-create-action@v2
+        with:
+          tags: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}
+          sources: |
+            fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64
+            fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64
+            fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm32
+
   test:
     needs: [combine]
     runs-on: ubuntu-22.04
