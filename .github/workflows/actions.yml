@@ -69,7 +69,7 @@ jobs:
           tags: |
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}
             fhriley/kodi-headless-novnc:${{ github.event.inputs.codename }}
-            ${{ (github.event.inputs.tag_latest == 'true' && ',fhriley/kodi-headless-novnc:latest') || '' }}
+            ${{ (github.event.inputs.tag_latest == 'true' && 'fhriley/kodi-headless-novnc:latest') || '' }}
           sources: |
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64
