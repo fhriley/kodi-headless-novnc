@@ -66,7 +66,7 @@ jobs:
         name: Create and push manifest images
         uses: int128/docker-manifest-create-action@v2
         with:
-          tags: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}, fhriley/kodi-headless-novnc:${{ github.event.inputs.codename }}${{ (github.event.inputs.tag_latest == 'true' && ', fhriley/kodi-headless-novnc:latest') || '' }}
+          tags: fhriley/kodi-headless-novnc:${{ github.event.inputs.version }},fhriley/kodi-headless-novnc:${{ github.event.inputs.codename }}${{ (github.event.inputs.tag_latest == 'true' && ',fhriley/kodi-headless-novnc:latest') || '' }}
           sources: |
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-amd64
             fhriley/kodi-headless-novnc:${{ github.event.inputs.version }}-arm64
