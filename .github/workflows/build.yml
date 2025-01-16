@@ -68,7 +68,7 @@ jobs:
               BASE_IMAGE=ubuntu:22.04
               EASY_NOVNC_IMAGE=fhriley/easy-novnc:1.3.0
               PYTHON_VERSION=3.10
-              KODI_BRANCH=${{ inputs.version }}-${{ inputs.codename }}
+              KODI_BRANCH=v${{ inputs.version }}-${{ inputs.codename }}
               CFLAGS=${{ inputs.cflags }}
               CXXFLAGS=${{ inputs.cflags }}
               WITH_CPU=${{ inputs.with_cpu }}
