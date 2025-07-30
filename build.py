@@ -4,7 +4,7 @@ import subprocess
 import shlex
 
 BASE_IMAGE = 'ubuntu:22.04'
-EASY_NOVNC_IMAGE = 'fhriley/easy-novnc:1.3.0'
+EASY_NOVNC_IMAGE = 'fhriley/easy-novnc:1.6.0'
 IMAGE_NAME = 'fhriley/kodi-headless-novnc'
 PLATFORMS = ['linux/amd64', 'linux/arm64', 'linux/arm/v7']
 CACHE = f'type=registry,ref={IMAGE_NAME}:'
