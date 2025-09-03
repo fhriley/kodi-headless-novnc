@@ -93,7 +93,7 @@ services:
 
 | Tag      | Codename | Architecture         |
 |----------|----------|----------------------|
-| `latest` | Nexus    | amd64, armv7, arm64  |
+| `latest` | Omega    | amd64, armv7, arm64  |
 | `Piers`  | Piers    | amd64, armv7, arm64  |
 | `Omega`  | Omega    | amd64, armv7, arm64  |
 | `Nexus`  | Nexus    | amd64, armv7, arm64  |
