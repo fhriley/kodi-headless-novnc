@@ -1,8 +1,8 @@
-ARG BASE_IMAGE="ubuntu:22.04"
-ARG EASY_NOVNC_IMAGE="fhriley/easy-novnc:1.3.0"
+ARG BASE_IMAGE="ubuntu:24.04"
+ARG EASY_NOVNC_IMAGE="fhriley/easy-novnc:1.6.0"
 
-FROM $EASY_NOVNC_IMAGE as easy-novnc
-FROM $BASE_IMAGE as build
+FROM $EASY_NOVNC_IMAGE AS easy-novnc
+FROM $BASE_IMAGE AS build
 
 ARG DEBIAN_FRONTEND="noninteractive"
 
@@ -15,15 +15,14 @@ RUN apt-get update -y \
     autopoint \
     autotools-dev \
     cmake \
-    cpp  \
+    cpp \
     curl \
+    debhelper \
     default-jre \
     default-libmysqlclient-dev \
-    flatbuffers-compiler \
-    flatbuffers-compiler-dev \
-    g++  \
+    g++ \
     gawk \
-    gcc  \
+    gcc \
     gdc \
     gettext \
     git \
@@ -32,8 +31,8 @@ RUN apt-get update -y \
     libass-dev  \
     libbluray-dev \
     libbz2-dev \
-    libcdio++-dev \
     libcdio-dev \
+    libcdio++-dev \
     libcrossguid-dev \
     libcurl4-openssl-dev \
     libcwiid-dev \
@@ -41,6 +40,7 @@ RUN apt-get update -y \
     libdrm-dev \
     libegl1-mesa-dev \
     libenca-dev \
+    libexiv2-dev \
     libflac-dev \
     libflatbuffers-dev \
     libfmt-dev  \
@@ -60,7 +60,6 @@ RUN apt-get update -y \
     libiso9660++-dev \
     libiso9660-dev \
     libjpeg-dev \
-    libkissfft-dev \
     libltdl-dev \
     liblzo2-dev \
     libmicrohttpd-dev \
@@ -91,9 +90,10 @@ RUN apt-get update -y \
     lsb-release \
     meson \
     nasm \
+    ninja-build \
+    nlohmann-json3-dev \
     python3-dev \
     python3-pil \
-    rapidjson-dev \
     swig \
     unzip \
     uuid-dev \
@@ -129,9 +129,7 @@ RUN mkdir -p /tmp/xbmc/build \
     -DENABLE_DBUS=OFF \
     -DENABLE_DVDCSS=OFF \
     -DENABLE_INTERNAL_FFMPEG=ON \
-    -DENABLE_INTERNAL_CROSSGUID=OFF \
-    -DENABLE_INTERNAL_KISSFFT=OFF \
-    -DENABLE_INTERNAL_RapidJSON=OFF \
+    -DENABLE_INTERNAL_NLOHMANNJSON=OFF \
     -DENABLE_EVENTCLIENTS=OFF \
     -DENABLE_GLX=ON \
     -DENABLE_LCMS2=OFF \
@@ -149,7 +147,7 @@ RUN mkdir -p /tmp/xbmc/build \
  && make -j $(nproc) \
  && make DESTDIR=/tmp/kodi-build install
 
-ARG PYTHON_VERSION=3.10
+ARG PYTHON_VERSION=3.12
 
 RUN install -Dm755 \
 	/tmp/xbmc/tools/EventClients/Clients/KodiSend/kodi-send.py \
@@ -170,31 +168,31 @@ RUN apt-get update -y \
     ca-certificates \
     curl \
     gosu \
-    libasound2 \
+    libasound2t64 \
     libass9 \
     libbluray2 \
     libcrossguid0 \
-    libcurl4 \
-    libdav1d5 \
+    libcurl4t64 \
+    libdav1d7 \
     libegl1 \
-    libfmt8 \
+    libexiv2-27 \
+    libfmt9 \
     libfstrcmp0 \
     libgl1 \
-    libiso9660-11 \
-    libkissfft-float131 \
+    libiso9660-11t64 \
     liblzo2-2 \
-    libmicrohttpd12 \
+    libmicrohttpd12t64 \
     libmysqlclient21 \
-    libnfs13 \
+    libnfs14 \
     libpcrecpp0v5 \
-    libplist3 \
-    libpython${PYTHON_VERSION} \
-    libsmbclient \
-    libspdlog1 \
+    libplist-2.0-4 \
+    libpython${PYTHON_VERSION}t64 \
+    libsmbclient0 \
+    libspdlog1.12 \
     libtag1v5 \
     libtinyxml2.6.2v5 \
-    libtinyxml2-9 \
-    libudf0 \
+    libtinyxml2-10 \
+    libudf0t64 \
     libudfread0 \
     libxrandr2 \
     libxslt1.1 \
@@ -202,6 +200,7 @@ RUN apt-get update -y \
     samba-common-bin \
     supervisor \
     tigervnc-standalone-server \
+    tigervnc-tools \
     tzdata \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* \
   && echo 'pcm.!default = null;' > /etc/asound.conf

@@ -7,7 +7,7 @@ on:
         description: 'The runner to run on'
         required: true
         type: string
-        default: 'ubuntu-22.04'
+        default: 'ubuntu-24.04'
       platform:
         description: 'The buildx platform'
         required: true
@@ -65,9 +65,9 @@ jobs:
           push: true
           platforms: ${{ inputs.platform }}
           build-args: |
-              BASE_IMAGE=ubuntu:22.04
+              BASE_IMAGE=ubuntu:24.04
               EASY_NOVNC_IMAGE=fhriley/easy-novnc:1.6.0
-              PYTHON_VERSION=3.10
+              PYTHON_VERSION=3.12
               KODI_BRANCH=${{ inputs.version }}-${{ inputs.codename }}
               CFLAGS=${{ inputs.cflags }}
               CXXFLAGS=${{ inputs.cflags }}
