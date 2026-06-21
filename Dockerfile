@@ -1,4 +1,4 @@
-ARG BASE_IMAGE="ubuntu:24.04"
+ARG BASE_IMAGE="ubuntu:26.04"
 ARG EASY_NOVNC_IMAGE="fhriley/easy-novnc:1.6.0"
 
 FROM $EASY_NOVNC_IMAGE AS easy-novnc
@@ -65,9 +65,7 @@ RUN apt-get update -y \
     libmicrohttpd-dev \
     libnfs-dev \
     libogg-dev \
-    libomxil-bellagio-dev \
     libp8-platform-dev \
-    libpcre3-dev \
     libplist-dev \
     libpng-dev \
     libsmbclient-dev \
@@ -147,7 +145,7 @@ RUN mkdir -p /tmp/xbmc/build \
  && make -j $(nproc) \
  && make DESTDIR=/tmp/kodi-build install
 
-ARG PYTHON_VERSION=3.12
+ARG PYTHON_VERSION=3.14
 
 RUN install -Dm755 \
 	/tmp/xbmc/tools/EventClients/Clients/KodiSend/kodi-send.py \
@@ -170,30 +168,29 @@ RUN apt-get update -y \
     gosu \
     libasound2t64 \
     libass9 \
-    libbluray2 \
+    libbluray3 \
     libcrossguid0 \
     libcurl4t64 \
     libdav1d7 \
     libegl1 \
-    libexiv2-27 \
-    libfmt9 \
+    libexiv2-28 \
+    libfmt10 \
     libfstrcmp0 \
     libgl1 \
-    libiso9660-11t64 \
+    libiso9660-12 \
     liblzo2-2 \
     libmicrohttpd12t64 \
-    libmysqlclient21 \
+    libmysqlclient24 \
     libnfs14 \
-    libpcrecpp0v5 \
     libplist-2.0-4 \
-    libpython${PYTHON_VERSION}t64 \
+    libpython${PYTHON_VERSION} \
     libsmbclient0 \
-    libspdlog1.12 \
-    libtag1v5 \
+    libspdlog1.15 \
+    libtag2 \
     libtinyxml2.6.2v5 \
-    libtinyxml2-10 \
+    libtinyxml2-11 \
     libudf0t64 \
-    libudfread0 \
+    libudfread3 \
     libxrandr2 \
     libxslt1.1 \
     python3-minimal \
